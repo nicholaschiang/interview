@@ -7,6 +7,8 @@ import {
 } from '@remix-run/react'
 import { Analytics } from '@vercel/analytics/react'
 
+import './root.css'
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
