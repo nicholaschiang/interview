@@ -17,7 +17,7 @@ _Live Example: https://remix-run-template.vercel.app_
 You can also deploy using the [Vercel CLI](https://vercel.com/docs/cli):
 
 ```sh
-npm i -g vercel
+pnpm i -g vercel
 vercel
 ```
 
@@ -26,13 +26,13 @@ vercel
 To run your Remix app locally, make sure your project's local dependencies are installed:
 
 ```sh
-npm install
+pnpm install
 ```
 
 Afterwards, start the Remix development server like so:
 
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 Open up [http://localhost:5173](http://localhost:5173) and you should be ready to go!
