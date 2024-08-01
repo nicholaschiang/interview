@@ -1,7 +1,10 @@
+import { NavLink } from '@remix-run/react'
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { type Response } from '~/routes/api.products'
+
+import { cn } from '~/cn'
 
 type Pagination = { limit: number; skip: number }
 
@@ -29,9 +32,17 @@ export default function ProductsPage() {
   return (
     <>
       <header className='flex flex-col items-center gap-2 border-b border-neutral-200 p-4'>
-        <h1 className='block bg-black px-1.5 py-0.5 text-lg font-semibold text-white'>
+        <NavLink
+          to='/'
+          className={({ isPending }) =>
+            cn(
+              'block bg-black px-1.5 py-0.5 text-lg font-semibold text-white',
+              isPending && 'cursor-wait',
+            )
+          }
+        >
           KITH
-        </h1>
+        </NavLink>
         <p className='text-sm italic text-neutral-400'>
           Built on the foundations of friends and family
         </p>
