@@ -29,6 +29,10 @@ Using the [`/api/products`](http://localhost:5173/api/products) API endpoint, cr
 Each product item should show the product image, name, and price.
 When clicked, the product item should open the product link in a new tab.
 
+Once you have a UI working, replace the `/api/products` endpoint with `/api/error`.
+Ensure that the UI correctly surfaces the error message to the end user.
+The error message should be: "Something went wrong getting the products."
+
 An example implementation can be found in `app/routes/products.tsx`.
 This implementation was completed in its entirety in less than 40 minutes.
 This should only be referenced if you are stuck or need inspiration.
