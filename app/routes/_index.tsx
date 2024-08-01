@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-export default function Index() {
+export default function IndexPage() {
   return (
     <div className='flex flex-col items-center justify-center gap-2 px-4 py-12'>
       <h1 className='text-blue-500'>Welcome to Remix</h1>

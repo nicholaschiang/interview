@@ -6,8 +6,11 @@ import {
   ScrollRestoration,
 } from '@remix-run/react'
 import { Analytics } from '@vercel/analytics/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import './root.css'
+import '~/root.css'
+
+const queryClient = new QueryClient()
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,7 +22,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
         <ScrollRestoration />
         <Scripts />
         <Analytics />

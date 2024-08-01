@@ -1,9 +1,11 @@
 import { json, type LoaderFunctionArgs } from '@vercel/remix'
 
+import { type Product } from '~/types'
+
 import products from '../../public/products.json'
 
-type Response = {
-  products: typeof products
+export type Response = {
+  products: Product[]
   total: number
 }
 
