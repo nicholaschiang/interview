@@ -11,8 +11,9 @@ export type Response = {
 
 const defaultLimit = 10
 const defaultSkip = 0
+const endpointSpeed = 2500
 
-export function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const { searchParams } = new URL(request.url)
   let limit = Number(searchParams.get('limit') ?? defaultLimit)
   let skip = Number(searchParams.get('skip') ?? defaultSkip)
@@ -21,6 +22,7 @@ export function loader({ request }: LoaderFunctionArgs) {
   console.log(
     `getting products... limit: ${limit}, skip: ${skip}, start: ${skip}, end: ${skip + limit}`,
   )
+  await new Promise((resolve) => setTimeout(resolve, endpointSpeed))
   return json<Response>({
     products: products.slice(skip, skip + limit),
     total: products.length,

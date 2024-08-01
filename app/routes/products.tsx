@@ -13,7 +13,7 @@ export default function ProductsPage() {
     limit: 10,
     skip: 0,
   })
-  const { data, isPending, error } = useQuery<Response>({
+  const { data, isFetching, isPending, error } = useQuery<Response>({
     placeholderData: keepPreviousData,
     queryKey: ['products', pagination],
     queryFn: async () => {
@@ -74,7 +74,7 @@ export default function ProductsPage() {
       )}
       {isPending && (
         <p className='m-4 flex min-h-48 animate-pulse items-center justify-center rounded bg-neutral-100 p-4'>
-          Loading product information...
+          Loading products...
         </p>
       )}
       {error && (
@@ -85,13 +85,14 @@ export default function ProductsPage() {
       {data && pagination.limit < data.total && (
         <div className='flex justify-center p-4'>
           <button
-            className='truncate rounded bg-black px-6 py-2 text-sm font-medium text-white shadow-sm'
+            className='truncate rounded bg-black px-6 py-2 text-sm font-medium text-white shadow-sm disabled:cursor-wait'
             type='button'
+            disabled={isFetching}
             onClick={() =>
               setPagination((prev) => ({ limit: prev.limit + 10, skip: 0 }))
             }
           >
-            Load more products
+            {isFetching ? 'Loading products...' : 'Load more products'}
           </button>
         </div>
       )}
