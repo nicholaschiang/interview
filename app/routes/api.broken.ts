@@ -9,7 +9,7 @@ export type Response = {
 
 const defaultLimit = 10
 const defaultSkip = 0
-const endpointSpeed = 100
+const endpointSpeed = 1000
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { searchParams } = new URL(request.url)
