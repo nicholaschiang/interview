@@ -2,7 +2,7 @@ import { json, type LoaderFunctionArgs } from '@vercel/remix'
 
 import products from '../../public/products.json'
 
-type Response = {
+export type Response = {
   products: typeof products
   total: number
 }
@@ -13,8 +13,12 @@ const endpointSpeed = 1000
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { searchParams } = new URL(request.url)
-  let limit = Number(searchParams.get('limit'))
-  let skip = Number(searchParams.get('skip'))
+  const searchLimit = searchParams.get('limit')
+  const searchSkip = searchParams.get('skip')
+
+  let limit = searchLimit != null ? Number(searchLimit) : defaultLimit
+  let skip = searchSkip != null ? Number(searchSkip) : defaultSkip
+
   if (isNaN(limit)) limit = defaultLimit
   if (isNaN(skip)) skip = defaultSkip
   await new Promise((resolve) => setTimeout(resolve, endpointSpeed))
